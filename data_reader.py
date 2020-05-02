@@ -116,24 +116,11 @@ def readLangs(lang1, lang2, data, reverse=False):
     return input_lang, output_lang, pairs
 
 
-
-eng_prefixes = (
-    "i am ", "i m ",
-    "he is", "he s ",
-    "she is", "she s",
-    "you are", "you re ",
-    "we are", "we re ",
-    "they are", "they re "
-)
-
-MAX_LENGTH = 10
-
-def filterPair(p, eng_prefixes = eng_prefixes, MAX_LENGTH = MAX_LENGTH):
+def filterPair(p,  MAX_LENGTH):
     return len(p[0].split(' ')) < MAX_LENGTH and \
-        len(p[1].split(' ')) < MAX_LENGTH #and \
-        #p[1].startswith(eng_prefixes)
+        len(p[1].split(' ')) < MAX_LENGTH
 
 
-def filterPairs(pairs, eng_prefixes = eng_prefixes, MAX_LENGTH = MAX_LENGTH):
-    return [pair for pair in pairs if filterPair(pair)]
+def filterPairs(pairs, MAX_LENGTH):
+    return [pair for pair in pairs if filterPair(pair, MAX_LENGTH)]
 
